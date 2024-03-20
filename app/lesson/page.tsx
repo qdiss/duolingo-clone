@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { getLesson, getUserProgress } from "@/db/queries";
-import Quiz from "./quizz";
+import Quiz from "./quiz";
 
 const LessonPage = async () => {
   const lessonData = getLesson();
