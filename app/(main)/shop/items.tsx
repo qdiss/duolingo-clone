@@ -5,10 +5,9 @@ import Image from "next/image";
 import { useTransition } from "react";
 
 import { Button } from "@/components/ui/button";
+import { POINTS_TO_REFILL } from "@/constants";
 import { refillHearts } from "@/actions/user-progress";
 import { createStripeUrl } from "@/actions/user-subscription";
-
-const POINTS_TO_REFILL = 10;
 
 type Props = {
   hearts: number;
@@ -20,7 +19,7 @@ export const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
   const [pending, startTransition] = useTransition();
 
   const onRefillHearts = () => {
-    if (pending || hearts === 5 || points < POINTS_TO_REFILL) {
+    if (pending || hearts === 10000 || points < POINTS_TO_REFILL) {
       return;
     }
 
@@ -52,7 +51,7 @@ export const Items = ({ hearts, points, hasActiveSubscription }: Props) => {
         </div>
         <Button
           onClick={onRefillHearts}
-          disabled={pending || hearts === 5 || points < POINTS_TO_REFILL}
+          disabled={pending || hearts === 10000 || points < POINTS_TO_REFILL}
         >
           {hearts === 5 ? (
             "full"
